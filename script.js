@@ -55,12 +55,14 @@ const perguntas = [
 ];
 
 let perg_atual = 0;
-let pergunta_atual
+let pergunta_atual;
+let historia_final = "";
 
 function mostra_pergunta() {
     pergunta_atual = perguntas[perg_atual]
     caixa_Perguntas.textContent = perguntas[0].enunciado
     caixa_Alternativas.textContent = "";
+    texto_Resultado.textContent = "";
     mostra_alternativas();
 };
 
@@ -71,12 +73,15 @@ function mostra_alternativas() {
     for (const alternativa of pergunta_atual.alternativas) {
         const botao_alternativas = document.createElement("button")
         botao_alternativas.textContent = alternativa.texto;
-        botao_alternativas.addEventListener("click", function () {
-            perg_atual++;
-            mostra_pergunta();
-        });
+        botao_alternativas.addEventListener("click", () => resposta_selecionada(alternativa));
         caixa_Alternativas.appendChild(botao_alternativas);
 
     }
 };
 
+function resposta_selecionada(opcao_selecionada) {
+    const afirmacao = opcao_selecionada.afirmacao;
+    historia_final = afirmacao;
+    perg_atual++;
+    mostra_pergunta();
+}
