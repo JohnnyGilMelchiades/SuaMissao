@@ -59,6 +59,10 @@ let pergunta_atual;
 let historia_final = "";
 
 function mostra_pergunta() {
+    if (perg_atual >= perguntas.length) {
+        mostra_resultado();
+        return;
+    };
     pergunta_atual = perguntas[perg_atual]
     caixa_Perguntas.textContent = perguntas[0].enunciado
     caixa_Alternativas.textContent = "";
@@ -76,12 +80,18 @@ function mostra_alternativas() {
         botao_alternativas.addEventListener("click", () => resposta_selecionada(alternativa));
         caixa_Alternativas.appendChild(botao_alternativas);
 
-    }
+    };
 };
 
 function resposta_selecionada(opcao_selecionada) {
     const afirmacao = opcao_selecionada.afirmacao;
-    historia_final = afirmacao;
+    historia_final += afirmacao + " ";
     perg_atual++;
     mostra_pergunta();
+};
+
+function mostra_resultado() {
+    caixa_Perguntas.textContent = "em 2049...";
+    texto_Resultado.textContent = historia_final;
+    caixa_Alternativas.textContent = "";
 }
