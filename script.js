@@ -19,7 +19,7 @@ const perguntas = [
                 texto: "Sim, com toda a certeza!",
                 afirmação: "Além de toda as consequências que  a propagação de desinformação podem causar, há também a questão jurídica, pois dependendo da informação disseminada: pode caber processo.",
 
-            },
+            }
         ]
     },
 
